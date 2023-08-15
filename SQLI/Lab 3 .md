@@ -11,7 +11,7 @@
 - copy the payload put it after any category and CTRL U to encode it and send
 - we get 200 response and it confirms we have atleast one column
 - when we try 2 we get 200 also bt when we try 3 we get internal server error
-- the hind says since this lab is On Oracle databases, every SELECT statement must specify a table to select FROM
+- the hint says since this lab is On Oracle databases, every SELECT statement must specify a table to select FROM
  - There is a built-in table on Oracle called dual which you can use for this purpose
 - now we got 2 columns we build our payload like this
 ```
