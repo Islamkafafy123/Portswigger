@@ -3,4 +3,5 @@
 # Goal
 - display the database version string
 # Solving The Lab
--First Determin number of columns
+- First add single quetes in the category and see respone and we see internal server error so there is a possibilty that sqli is here
+- 
