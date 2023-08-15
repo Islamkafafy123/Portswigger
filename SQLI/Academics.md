@@ -25,3 +25,16 @@
 - Subverting application logic, where you can change a query to interfere with the application's logic
 - UNION attacks, where you can retrieve data from different database tables.
 - Blind SQL injection, where the results of a query you control are not returned in the application's responses
+# Blind SQL injection
+- application does not return the results of the SQL query or the details of any database errors within its responses
+- to exploit blind SQL injection vulnerabilities:
+  - change the logic of the query to trigger a detectable difference in the application's response depending on the truth of a single condition
+    - involve injecting a new condition into some Boolean logic, or conditionally triggering an error such as a divide-by-zero
+  - trigger a time delay in the processing of the query, allowing you to infer the truth of the condition based on the time that the application takes to respond
+  - trigger an out-of-band network interaction, using OAST techniques
+# Second-order SQL injection
+- First-order SQL injection arises where the application takes user input from an HTTP request and, in the course of processing that request, incorporates the input into a SQL query in an unsafe way
+- In second-order SQL injection (also known as stored SQL injection), the application takes user input from an HTTP request and stores it for future use
+  - done by placing the input into a database, but no vulnerability arises at the point where the data is stored.
+  - Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way
+# How to prevent SQL injection
