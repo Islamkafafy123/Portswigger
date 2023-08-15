@@ -38,3 +38,25 @@
   - done by placing the input into a database, but no vulnerability arises at the point where the data is stored.
   - Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way
 # How to prevent SQL injection
+-  prevented by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+-  vulnerable to SQL injection :
+```
+String query = "SELECT * FROM products WHERE category = '"+ input + "'";
+    Statement statement = connection.createStatement();
+    ResultSet resultSet = statement.executeQuery(query);
+```
+- Mitigation
+```
+PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
+    statement.setString(1, input);
+    ResultSet resultSet = statement.executeQuery();
+```
+- Parameterized queries can be used for any situation where untrusted input appears as data within the query, including the WHERE clause and values in an INSERT or UPDATE statement. They can't be used to handle untrusted input in other parts of the query, such as table or column names, or the ORDER BY clause
+- Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values
+- For a parameterized query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant
+# Examining the database in SQL injection attacks
+- necessary to gather some information about the database itself. This includes the type and version of the database software, and the contents of the database in terms of which tables and columns it contains
+- UNION attack
+```
+' UNION SELECT @@version--
+```
