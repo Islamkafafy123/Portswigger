@@ -21,3 +21,4 @@ SELECT * FROM users WHERE username = ''' AND password = 'admin'
 SELECT * FROM users WHERE username = 'administrator'--' AND password = 'admin'
 ```
 - with the payload ( administrator'--) in username field and anything in the password field
+- And we solved the lab
