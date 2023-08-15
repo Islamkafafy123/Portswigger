@@ -7,3 +7,7 @@
 - determine the name of this table and the columns it contains
 - retrieve the contents of the table to obtain the username and password of all users
 # Solving The Lab
+- First Find Number of Columns with
+```
+
+```
