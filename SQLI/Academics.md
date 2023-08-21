@@ -60,3 +60,28 @@ PreparedStatement statement = connection.prepareStatement("SELECT * FROM product
 ```
 ' UNION SELECT @@version--
 ```
+# Union Attacks
+- The UNION keyword lets you execute one or more additional SELECT queries and append the results to the original query
+- For a UNION query to work, two key requirements must be met:
+  - The individual queries must return the same number of columns.
+  - The data types in each column must be compatible between the individual queries.
+- When performing a SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+  - The first method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs
+    - you would submit:
+    ```
+    ' ORDER BY 1--
+    ' ORDER BY 2--
+    ' ORDER BY 3--
+     etc.
+    ```
+    - This series of payloads modifies the original query to order the results by different columns in the result set
+    - The column in an ORDER BY clause can be specified by its index, so you don't need to know the names of any columns. When the specified column index 
+     exceeds the number of actual columns in the result set, the database returns an error,
+  - The second method involves submitting a series of UNION SELECT payloads specifying a different number of null values
+  ```
+  ' UNION SELECT NULL--
+  ' UNION SELECT NULL,NULL--
+  ' UNION SELECT NULL,NULL,NULL--
+  etc.
+  ```
+    - If the number of nulls does not match the number of columns, the database returns an error
