@@ -105,4 +105,7 @@ PreparedStatement statement = connection.prepareStatement("SELECT * FROM product
 - uses the double-pipe sequence || which is a string concatenation operator on Oracle
 - injected query concatenates together the values of the username and password fields, separated by the ~ character
 - different databases use different syntax to perform string concatenation
-  
+# Blind SQL injection
+- Blind SQL injection arises when an application is vulnerable to SQL injection, but its HTTP responses do not contain the results of the relevant SQL query or the details of any database errors
+- With blind SQL injection vulnerabilities, many techniques such as UNION attacks, are not effective because they rely on being able to see the results of the injected query within the application's responses
+- different techniques must be used.
