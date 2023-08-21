@@ -96,4 +96,13 @@ PreparedStatement statement = connection.prepareStatement("SELECT * FROM product
   ```
   - If the data type of a column is not compatible with string data, the injected query will cause a database error
   - If an error does not occur, and the application's response contains some additional content including the injected string value, then the relevant column is suitable for retrieving string data
+## Retrieving multiple values within a single column
+- retrieve multiple values together within this single column by concatenating the values together
+- on Oracle you could submit the input:
+```
+' UNION SELECT username || '~' || password FROM users--
+```
+- uses the double-pipe sequence || which is a string concatenation operator on Oracle
+- injected query concatenates together the values of the username and password fields, separated by the ~ character
+- different databases use different syntax to perform string concatenation
   
