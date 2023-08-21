@@ -5,3 +5,4 @@
 # Goal
 - To solve the lab, perform a SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
 # Solving The lab
+- finding number of columns 
