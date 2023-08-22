@@ -36,5 +36,15 @@ SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
 - now to confirm parameter is vulnurable to blind SQLI
 - the Query we will assume it will look like this
 ```
-
+SELECT tracking-id FROM tracking-table WHERE tracking-id = '73otf20UOtx4AXLk' 
 ```
+- If this tracking id exists -> query returns value -> Welcome back message
+- If the tracking id doesn't exist -> query returns nothing -> no Welcome back message
+- select tracking-id from tracking-table where trackingId = '73otf20UOtx4AXLk' and 1=1--'
+- we comment to not get syntax error
+- we send the payload and url encode it 
+-> TRUE -> Welcome back
+
+- select tracking-id from tracking-table where trackingId = '73otf20UOtx4AXLk' and 1=0--'
+-> FALSE -> no Welcome back
+- since we dont get a welcome back message when query is false so its vulnurable to blind SQLI
