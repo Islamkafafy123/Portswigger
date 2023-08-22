@@ -28,7 +28,13 @@ SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
 # Solving the lab
 - we open the cookie editor and we see 2 cookies one is session cookie and one is trackinf cookie the lab says the tracking cookie is vulnurable
 - to determine which is vulnurable we need to fuzz every parameter that talks to the backend and see the responses
-- to test for blind SQLI we need to test for 2 response one is true and one is false 
 - when we open the lab we dont see a welcome message because its the first time using the cookie
 - when we click ony any button we see the welcome back message
 - now open burp to confirm that this is vulnurable, intercept request and send request to repeater
+- to test for bling based SQLI is to force 2 use cases and see how the application response one false and one true
+  - if two responses are different then its expoitable
+- now to confirm parameter is vulnurable to blind SQLI
+- the Query we will assume it will look like this
+```
+
+```
