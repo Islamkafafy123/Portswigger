@@ -31,4 +31,6 @@
 - leak the password for the administrator
 - Log in via Administrator
 # Solving The lab  
+- Go to the Proxy > HTTP history tab and find a GET / request that contains a TrackingId cookie
+- 
 
