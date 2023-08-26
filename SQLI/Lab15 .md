@@ -4,3 +4,4 @@
 # Goal
 - The database contains a different table called users, with columns called username and password
 # Solving The Lab
+- first thing is to check if the parameter is vulnurable
