@@ -109,3 +109,6 @@ PreparedStatement statement = connection.prepareStatement("SELECT * FROM product
 - Blind SQL injection arises when an application is vulnerable to SQL injection, but its HTTP responses do not contain the results of the relevant SQL query or the details of any database errors
 - With blind SQL injection vulnerabilities, many techniques such as UNION attacks, are not effective because they rely on being able to see the results of the injected query within the application's responses
 - different techniques must be used.
+# How to prevent blind SQL injection attacks?
+- the measures needed to prevent SQL injection are the same regardless of whether the vulnerability is blind or not.
+- As with regular SQL injection, blind SQL injection attacks can be prevented through the careful use of parameterized queries, which ensure that user input cannot interfere with the structure of the intended SQL query.
