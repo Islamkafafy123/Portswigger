@@ -22,3 +22,5 @@
 - Even compromising a low-privileged account might still grant an attacker access to data that they otherwise shouldn't have, such as commercially sensitive business information
 - Even if the account does not have access to any sensitive data, it might still allow the attacker to access additional pages, which provide a further attack surface.
 - certain high-severity attacks will not be possible from publicly accessible pages, but they may be possible from an internal page. 
+# Vulnerabilities in password-based login
+- 
