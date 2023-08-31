@@ -20,4 +20,4 @@
 ```
 username=ap&password=pepper
 ```
-- login and we solved the lab
+- login  with proxy while adding the additional header and forward the request and we solved the lab
