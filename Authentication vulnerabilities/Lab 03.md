@@ -17,4 +17,7 @@
 - Create a new Burp Intruder attack for the same request. Add the X-Forwarded-For header again and add a payload position to it. Insert the username that you just identified and add a payload position to the password parameter.
 - On the Payloads tab, add the list of numbers in payload set 1 and add the list of passwords to payload set 2. Start the attack.
 - When the attack is finished, find the response with a 302 status. Make a note of this password.
+```
+username=ap&password=pepper
+```
 - login and we solved the lab
