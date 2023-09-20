@@ -4,3 +4,5 @@
 # Goal
 - brute-force the 2FA code and access Carlos's account page
 - carlos:montoya
+# solving The Lab
+i didnt understand the solution provided when i do i will come back and write it
