@@ -14,7 +14,7 @@ carlos:montoya
   - Certain Action : change email
   - cookie based session handeling : session cookie
   - no unpredictablle request parameters :
-- Testing For CSRF
+- Testing For CSRF Tokens
   - Remove CSRF Token and see if application accepts it 
   - change request method from post to get
   - see if csrf token is tied to user session : YES
