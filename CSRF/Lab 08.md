@@ -29,7 +29,7 @@
   ```
   <script>
     document.location = "https://YOUR-LAB-ID.web-security-academy.net/post/comment/confirmation?postId=../my-account";
-</script>
+  </script>
   ```
   - when the client-side redirect takes place,  still end up on logged-in account page. This confirms that the browser included  authenticated session cookie in the second request, even though the initial comment-submission request was initiated from an arbitrary external site
 - now to final exploit
